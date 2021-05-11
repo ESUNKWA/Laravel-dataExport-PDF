@@ -15,6 +15,7 @@
         <div class="container mt-5">
             <a class="btn btn-primary mt-2" href="{{ URL::to('/employee') }}">Exporter au format PDF</a>
 
+            
             <div class="row">
                 <div class="col-12">
                     <table class="table table-bordered">
@@ -26,12 +27,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach ($datas as $value)
                             <tr>
-                                <td>{{ $datas["r_nom"] }}</td>
-                                <td>{{ $datas["r_prenoms"] }}</td>
-                                <td>{{ $datas["r_contact"] }}</td>
+                                <td>{{ $value->r_nom }}</td>
+                                <td>{{ $value->r_prenoms }}</td>
+                                <td>{{ (!$value->r_phone)?'Pas de contact':$value->r_phone }}</td>
                             </tr>
+                            @endforeach
+                            
                             
                         </tbody>
                     </table>
